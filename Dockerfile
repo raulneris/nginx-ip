@@ -1,4 +1,8 @@
-CMD ["sh", "-c","IP=$(hostname -i) && \
+FROM nginx
+RUN apt update \
+    && apt install -y iputils-ping
+
+CMD ["sh", "-c","IP=$(hostname -I) && \
 echo '<!DOCTYPE html>' > /usr/share/nginx/html/index.html && \
 echo '<html>' >> /usr/share/nginx/html/index.html && \
 echo '<head>' >> /usr/share/nginx/html/index.html && \
