@@ -1,18 +1,5 @@
-FROM nginx
+FROM nginx:1.25.3
 RUN apt update \
     && apt install -y iputils-ping
-
-CMD ["sh", "-c","IP=$(hostname -I) && \
-echo '<!DOCTYPE html>' > /usr/share/nginx/html/index.html && \
-echo '<html>' >> /usr/share/nginx/html/index.html && \
-echo '<head>' >> /usr/share/nginx/html/index.html && \
-echo '<title>Welcome to nginx! I am running here '$IP'!</title>' >> /usr/share/nginx/html/index.html && \
-echo '<style>' >> /usr/share/nginx/html/index.html && \
-echo 'html { color-scheme: light dark; }' >> /usr/share/nginx/html/index.html && \
-#echo 'body { width: 35em; margin: 0 auto;' >> /usr/share/nginx/html/index.html && \
-echo 'font-family: Tahoma, Verdana, Arial, sans-serif; }' >> /usr/share/nginx/html/index.html && \
-echo '</style>' >> /usr/share/nginx/html/index.html && \
-echo '</head>' >> /usr/share/nginx/html/index.html && \
-echo '<body>' >> /usr/share/nginx/html/index.html && \
-echo '<h1>Welcome to nginx! I am running here '$IP'!</h1>' >> /usr/share/nginx/html/index.html & \
-nginx -g 'daemon off;'"]
+RUN export IP=$(hostname -I) ; \
+    sed -i "s,<h1>Welcome to nginx!</h1>,<h1>Welcome to nginx! This is my IP address <font color="red">$IP</font></h1>,g" /usr/share/nginx/html/index.html
