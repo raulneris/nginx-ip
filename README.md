@@ -5,4 +5,5 @@ Esse repositório contem o arquivo `Dockerfile` para a construção da imagem [n
 https://stackoverflow.com/questions/77525952/show-ip-address-of-a-docker-nginx-container-in-its-content  
 https://unix.stackexchange.com/questions/454220/how-to-assign-variable-and-use-sed-to-replace-contents-of-configuration-file-in  
 https://hub.docker.com/_/nginx  
-https://kinsta.com/pt/blog/cor-da-fonte-html/
+https://kinsta.com/pt/blog/cor-da-fonte-html/  
+https://quinn.io/2014/03-26-running-nginx-in-the-foreground/
